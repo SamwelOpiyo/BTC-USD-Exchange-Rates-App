@@ -1,0 +1,15 @@
+# collected static and media files
+CollectedStatic/
+CollectedMedia/
+
+# log files
+logs/
+
+# Bytecode files and Unsaved
+*.pyc
+*.swp
+
+__pycache__/
+
+# Database
+db.sqlite3
