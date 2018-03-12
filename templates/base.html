@@ -1,0 +1,159 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    {% block meta %}
+    {% endblock meta %}
+
+    {% block favicon %}
+    {% endblock favicon %}
+
+    {% block title %}
+    {% endblock title %}
+
+
+
+
+
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+    {% block fonts_icons %}
+    {% endblock fonts_icons %}
+
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}"></link>
+    <link rel="stylesheet" href="{% static '/css/material-kit.css' %}"></link>
+    <link rel="stylesheet" href="{% static '/css/paginate.css' %}"></link>
+
+    {% block css %}
+    {% endblock css %}
+
+    {% block head_extra %}
+    {% endblock head_extra %}
+
+</head>
+
+<body class="index-page" style="background-color: white;">
+
+	<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+        		</button>
+        		<a class="navbar-brand" href="#">Bitcoin Exchange Rates</a>
+        	</div>
+
+        	<div class="collapse navbar-collapse" id="navigation-example">
+        		<ul class="nav navbar-nav navbar-right">
+    				<li>
+    					<a href="/" class="btn">
+    						Home
+    					</a>
+    				</li>
+    				<li>
+    					<a href="#" class="btn">
+    						About
+    					</a>
+    				</li>
+		            <li>
+		                <a href="#" target="_blank" class="btn btn-simple">
+							<i class="fa fa-twitter"></i>
+						</a>
+		            </li>
+		            <li>
+		                <a href="#" target="_blank" class="btn btn-simple">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+		            </li>
+					<li>
+		                <a href="#" target="_blank" class="btn btn-simple">
+							<i class="fa fa-instagram"></i>
+						</a>
+		            </li>
+        		</ul>
+        	</div>
+    	</div>
+    </nav>
+
+    <div class="wrapper">
+		<!--<div class="header header-filter" style="background-image: url('/static/img/examples/city.jpg');"></div>-->
+		<div class="header header-filter" style="height: 3%;"></div>
+
+		<!--<div class="main main-raised">
+			<div class="profile-content">
+	            <div class="container">-->
+
+    {% block content %}
+    {% endblock content %}
+
+    <footer class="footer">
+        <div class="container">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="#">
+                            Bitcoin Exchange Rates
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="https://samwelopiyo.guru">Samwel Opiyo</a>
+            </div>
+        </div>
+    </footer>
+
+    {% block extrabody %}
+    {% endblock extrabody %}
+
+
+</body>
+
+
+{% block js %}
+{% endblock js %}
+
+<script type="text/javascript" src="{% static '/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/material.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/nouislider.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/bootstrap-datepicker.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/material-kit.js' %}"></script>
+
+
+<script type="text/javascript">
+    $().ready(function(){
+        // the body of this function is in assets/material-kit.js
+        $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
+    });
+</script>
+
+
+
+
+</html>

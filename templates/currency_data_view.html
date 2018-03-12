@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block meta %}
+{% endblock meta %}
+
+{% block favicon %}
+{% endblock favicon %}
+
+{% block title %}
+    <title>Home Page - Bitcoin Exchange Rates: {{currency}} Data</title>
+{% endblock title %}
+
+{% block fonts_icons %}
+{% endblock fonts_icons %}
+
+{% block css %}
+{% endblock css %}
+
+{% block head_extra %}
+{% endblock head_extra %}
+
+
+{% block content %}
+    <div class="container">
+      <h1>BTC-{{currency}}</h1>
+      <input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter"><br>
+      <p style="color:#9C7D23;">Filters for this page only!</p>
+      {% if data %}
+          <table id="rwd-table" class="table order-table">
+            <thead>
+
+            </thead>
+            <tbody>
+              {% for each in data %}
+                  <tr>
+                      <td>{{each.0}}</td>
+                      <td>{{each.4}}</td>
+                      <td>{{each.5}}</td>
+                      <td>{{each.6}}</td>
+                      <td>{{each.7}}</td>
+                  </tr>
+              {% endfor %}
+           </tbody>
+      </table>
+      {% else %}
+          <h3>No Records Found!!!</h3>
+      {% endif %}
+    </div>
+{% endblock content %}
+
+{% block extrabody %}
+{% endblock extrabody %}
+
+
+{% block js %}
+<script type="text/javascript" >
+(function(document) {
+	'use strict';
+
+	var LightTableFilter = (function(Arr) {
+
+		var _input;
+
+		function _onInputEvent(e) {
+			_input = e.target;
+			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filter);
+				});
+			});
+		}
+
+		function _filter(row) {
+			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+		}
+
+		return {
+			init: function() {
+				var inputs = document.getElementsByClassName('light-table-filter');
+				Arr.forEach.call(inputs, function(input) {
+					input.oninput = _onInputEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
+</script>
+{% endblock js %}

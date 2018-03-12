@@ -13,3 +13,6 @@ __pycache__/
 
 # Database
 db.sqlite3
+
+# Celery database
+celerybeat-schedule

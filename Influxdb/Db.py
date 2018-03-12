@@ -69,8 +69,8 @@ class InfluxDBInstance(object):
 
     # Query database
     def query_data(self, search_query):
-        self.client.query(search_query)
-        return
+        results = self.client.query(search_query)
+        return results
 
 
 def db_main(**kwargs):
