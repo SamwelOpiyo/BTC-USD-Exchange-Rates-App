@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block meta %}
+{% endblock meta %}
+
+{% block favicon %}
+{% endblock favicon %}
+
+{% block title %}
+    <title>Home Page - Bitcoin Exchange Rate Now: {{currency}} Data</title>
+{% endblock title %}
+
+{% block fonts_icons %}
+{% endblock fonts_icons %}
+
+{% block css %}
+{% endblock css %}
+
+{% block head_extra %}
+{% endblock head_extra %}
+
+
+{% block content %}
+    <div class="container">
+      <h1>BTC-{{currency}}</h1>
+      {% if data %}
+          <div class="col-sm-6">
+            <h2>Currency: {{currency}}</h2>
+            <h2>Symbol: {{data.symbol}}</h2>
+          </div>
+          <div class="col-sm-6">
+            <h2>Buying: {{data.buy}}</h2>
+            <h2>Selling: {{data.sell}}</h2>
+          </div>
+      {% else %}
+          <h3>No Records Found!!!</h3>
+      {% endif %}
+    </div>
+{% endblock content %}
+
+{% block extrabody %}
+{% endblock extrabody %}
+
+
+{% block js %}
+{% endblock js %}

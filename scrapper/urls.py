@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from views import currency_list_view, currency_data_view
+from views import currency_list_view, currency_data_view, currency_now_view
 
 urlpatterns = [
     url(r'^$', currency_list_view, name='currency_list'),
     url(r'^BTC-(?P<currency>[a-zA-Z+]+)/$', currency_data_view, name='currency_view'),
+    url(r'^BTC-(?P<currency>[a-zA-Z+]+)/now$', currency_now_view, name='currency_now'),
 ]
