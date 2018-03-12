@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'scrapper',
 ]
 
 MIDDLEWARE = [
@@ -145,7 +146,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'CollectedMedia')
 MEDIA_URL = '/media/'
 
 
-CELERY_ACCEPT_CONTENT = ['json']
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Africa/Nairobi'
+
+INFLUXDB_DATABASE = 'BTC-USD'
+INFLUXDB_USER = 'root'
+INFLUXDB_PASSWORD = 'root'
+INFLUXDB_HOST = 'localhost'
+INFLUXDB_PORT = 8086
