@@ -12,7 +12,7 @@ echo “Starting $NAME as `whoami` with Gunicorn.”
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use –daemon)
-exec gunicorn billbored.wsgi:application \
+exec gunicorn bitcoin_rates.wsgi:application \
     --name $NAME \
     --workers $NUM_WORKERS \
     --max-requests $MAX_REQUESTS \
