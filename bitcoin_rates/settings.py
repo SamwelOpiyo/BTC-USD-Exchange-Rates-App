@@ -65,7 +65,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.i18n",
                 "django.template.context_processors.request",
-                "zinnia.context_processors.version",
 
 
                 "django.template.context_processors.media",
@@ -153,6 +152,14 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Africa/Nairobi'
+
+from datetime import timedelta
+CELERYBEAT_SCHEDULE = {
+    'getdata-every-10-sec': {
+        'task': 'scrapper.tasks.scraper_example',
+        'schedule': timedelta(seconds=10) # 10 = every 10 seconds
+    },
+}
 
 INFLUXDB_DATABASE = 'BTC-USD'
 INFLUXDB_USER = 'root'

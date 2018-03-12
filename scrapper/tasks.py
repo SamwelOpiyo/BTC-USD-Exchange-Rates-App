@@ -1,5 +1,5 @@
 from celery.task.schedules import crontab
-from celery.decorators import periodic_task
+from celery.decorators import task
 from scrapper.utils import web_dict
 from celery.utils.log import get_task_logger
 from datetime import datetime
@@ -10,7 +10,8 @@ from django.conf import settings
 logger = get_task_logger(__name__)
 
 # A periodic task that will run every 10 seconds (the symbol "*" means every)
-@periodic_task(run_every=(crontab())) # minute="*/10"
+# @periodic_task(run_every=(crontab())) # minute="*/10"
+@task
 def scraper_example():
     logger.info("Start task")
     get_data = web_dict("https://blockchain.info/ticker")
