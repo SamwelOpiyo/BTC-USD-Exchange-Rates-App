@@ -11,6 +11,9 @@ from utils import web_dict
 # Create your views here.
 
 def currency_list_view(request):
+    """
+    A view to display currency list whose data is saved in the database
+    """
     new_db_instance = InfluxDBInstance(
         settings.INFLUXDB_DATABASE,
         settings.INFLUXDB_USER,
@@ -26,6 +29,10 @@ def currency_list_view(request):
     )
 
 def currency_data_view(request, currency):
+    """
+    A view to display currency exchange rates (past) with reference to bitcoin
+    whose data is saved in the database
+    """
     new_db_instance = InfluxDBInstance(
         settings.INFLUXDB_DATABASE,
         settings.INFLUXDB_USER,
@@ -44,6 +51,10 @@ def currency_data_view(request, currency):
     )
 
 def currency_now_view(request, currency):
+    """
+    A view to display currency exchange rates (current) with reference to bitcoin
+    whose data is saved in the database
+    """
     get_data = web_dict("https://blockchain.info/ticker")
     if get_data[currency]:
         return render(

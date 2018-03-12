@@ -20,18 +20,26 @@ logger.addHandler(fh)
 """
 
 def get_url(url):
+    # returns response code for a get request object made to a url
     return requests.get(url)
 
 
 def get_text(request_url):
+    # takes a get request object and returns the text in the url
     return request_url.text
 
 
 def convert_to_dict(text):
+    # converts json objects to python dictionary
     return json.loads(text)
 
 
 def web_dict(url):
+    """
+    Takes a url
+    Gets the json response
+    Return a dictionary of the response
+    """
     try:
         request = get_url(url)
         json_text = get_text(request)

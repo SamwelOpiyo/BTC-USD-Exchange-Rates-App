@@ -1,6 +1,8 @@
 #!/bin/sh
 
+# Run database migrations
 python manage.py migrate
+# collect static files
 python manage.py collectstatic
 
 NAME=”BitcoinExchange” # Name of the application
@@ -12,7 +14,7 @@ echo “Starting $NAME as `whoami` with Gunicorn.”
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use –daemon)
-exec gunicorn bitcoin_rates.wsgi:application \
+gunicorn bitcoin_rates.wsgi:application \
     --name $NAME \
     --workers $NUM_WORKERS \
     --max-requests $MAX_REQUESTS \
@@ -21,5 +23,6 @@ exec gunicorn bitcoin_rates.wsgi:application \
     --access-logfile=logs/gunicorn-access \
     --error-logfile=logs/gunicorn-error \
     --daemon \
+
 
 celery -A bitcoin_rates -l info worker -B

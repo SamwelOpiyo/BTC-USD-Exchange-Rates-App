@@ -13,6 +13,10 @@ logger = get_task_logger(__name__)
 # @periodic_task(run_every=(crontab())) # minute="*/10"
 @task
 def scraper_example():
+    """
+    Celery task that fetches bitcoin exchange rates from blockchain.info/ticker
+    and saves the data to Influxdb Database
+    """
     logger.info("Start task")
     get_data = web_dict("https://blockchain.info/ticker")
     if type(get_data) == dict:

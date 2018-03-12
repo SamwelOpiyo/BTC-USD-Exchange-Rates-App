@@ -22,7 +22,7 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 class InfluxDBInstance(object):
-# create a connection to database
+    # create a connection to database
     def __init__(
         self,
         dbname,
