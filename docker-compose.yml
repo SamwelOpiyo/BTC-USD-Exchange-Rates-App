@@ -6,6 +6,9 @@ web:
   links:
     - influxdb:influxdb
     - redis:redis
+  environment:
+    - INFLUXDB_HOST=influxdb
+    - REDIS_HOST=redis
   volumes:
     - /Bitcoin_Exchange_Rates
     - /Bitcoin_Exchange_Rates/CollectedStatic
