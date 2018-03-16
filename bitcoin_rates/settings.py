@@ -146,8 +146,9 @@ MEDIA_URL = '/media/'
 
 
 # CELERY STUFF
-BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
+BROKER_URL = 'redis://' + REDIS_HOST + ':6379'
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -164,5 +165,5 @@ CELERYBEAT_SCHEDULE = {
 INFLUXDB_DATABASE = 'BTC-USD'
 INFLUXDB_USER = 'root'
 INFLUXDB_PASSWORD = 'root'
-INFLUXDB_HOST = 'localhost'
+INFLUXDB_HOST = os.environ.get('INFLUXDB_HOST', 'localhost')
 INFLUXDB_PORT = 8086

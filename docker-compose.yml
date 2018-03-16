@@ -14,6 +14,9 @@ web:
     - /Bitcoin_Exchange_Rates/CollectedStatic
     - /Bitcoin_Exchange_Rates/CollectedMedia
   command: ./bash_scripts/install.sh && ./bash_scripts/start.sh
+  depends_on:
+      - influxdb:influxdb
+      - redis:redis
 
 influxdb:
   restart: always
