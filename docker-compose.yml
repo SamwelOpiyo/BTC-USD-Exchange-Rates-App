@@ -1,33 +1,36 @@
-web:
-  restart: always
-  build: .
-  expose:
-    - "8000"
-  links:
-    - influxdb:influxdb
-    - redis:redis
-  environment:
-    - INFLUXDB_HOST=influxdb
-    - REDIS_HOST=redis
-  volumes:
-    - /Bitcoin_Exchange_Rates
-    - /Bitcoin_Exchange_Rates/CollectedStatic
-    - /Bitcoin_Exchange_Rates/CollectedMedia
-  command: ./bash_scripts/install.sh && ./bash_scripts/start.sh
-  depends_on:
+version: '3'
+
+services:
+  web:
+    restart: always
+    build: .
+    expose:
+      - "8000"
+    links:
       - influxdb:influxdb
       - redis:redis
+    environment:
+      - INFLUXDB_HOST=influxdb
+      - REDIS_HOST=redis
+    volumes:
+      - /Bitcoin_Exchange_Rates
+      - /Bitcoin_Exchange_Rates/CollectedStatic
+      - /Bitcoin_Exchange_Rates/CollectedMedia
+    command: ./bash_scripts/install.sh && ./bash_scripts/start.sh
+    depends_on:
+      - influxdb
+      - redis
 
-influxdb:
-  restart: always
-  image: influxdb:1.4.3-alpine
-  ports:
-    - "8086:8086"
-  restart: unless-stopped
+  influxdb:
+    restart: always
+    image: influxdb:1.4.3-alpine
+    ports:
+      - "8086:8086"
+    restart: unless-stopped
 
-redis:
-  restart: always
-  image: redis:4.0.8-alpine
-  ports:
-    - "6379:6379"
-  restart: unless-stopped
+  redis:
+    restart: always
+    image: redis:4.0.8-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
