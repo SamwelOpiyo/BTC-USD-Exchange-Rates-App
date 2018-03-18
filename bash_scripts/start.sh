@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # Run database migrations
-python manage.py migrate
+python manage.py makemigrations --no-input
+python manage.py migrate --no-input
 # collect static files
-python manage.py collectstatic
+python manage.py collectstatic --no-input
 
 NAME=”BitcoinExchange” # Name of the application
 NUM_WORKERS=3 # how many worker processes should Gunicorn spawn

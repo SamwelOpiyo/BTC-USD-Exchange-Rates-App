@@ -8,6 +8,7 @@ echo "***********************************************"
 echo "---install dependencies (including django)  ---"
 echo "***********************************************"
 # install requirements
+pip install --upgrade pip
 pip install -r requirements.txt
 # show installed python modules
 pip freeze
